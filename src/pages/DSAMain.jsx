@@ -109,13 +109,13 @@ class DSAMain extends React.Component {
       <main className={classes.root}>
         <DSAGrid>
           <DSAGridRow>
-            <DSAInfoBox text="Kritische Erfolge" />
+            <DSAInfoBox title="Kritische Erfolge" />
           </DSAGridRow>
           <DSAGrid>
             {this.getSuccesses()}
           </DSAGrid>
           <DSAGridRow>
-            <DSAInfoBox text="Fehlschläge" />
+            <DSAInfoBox title="Kritische Fehlschläge" />
           </DSAGridRow>
           <DSAGrid>
             {this.getFails()}
