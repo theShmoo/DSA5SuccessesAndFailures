@@ -7,6 +7,7 @@ import DSAButton from '../controls/DSAButton';
 import { DSAGrid, DSAGridItem, DSAGridRow} from '../controls/DSAGrid';
 import DSAMediaCard from '../controls/DSAMediaCard';
 import DSADialog from '../controls/DSADialog';
+import DSADescription from '../controls/DSADescription';
 import {mapObject} from '../controls/DSAUtils';
 import {DSARandomAttack} from '../data/DSARandomAttackTables';
 
@@ -105,7 +106,7 @@ class DSAMain extends React.Component {
 
   render() {
     const { classes } = this.props;
-    return (
+    return (<div>
       <main className={classes.root}>
         <DSAGrid>
           <DSAGridRow>
@@ -129,7 +130,25 @@ class DSAMain extends React.Component {
           {this.state.current.description}
         </DSADialog>
       </main>
-    );
+      <footer>
+        <DSAGrid>
+          <DSAGridRow>
+            <DSAInfoBox>
+              <DSADescription caption="Impressum">
+                Website von David Pfahler.
+                Dieses Produkt wurde unter Lizenz erstellt. Das Schwarze Auge und sein Logo sowie Aventuria, Dere, Myranor, Riesland, Tharun und Uthuria
+                und ihre Logos sind eingetragene Marken von Significant GbR in Deutschland, den U.S.A. und anderen Ländern. Ulisses Spiele und sein Logo
+                sind eingetragene Marken der Ulisses Medien und Spiele Distribution GmbH.
+                Dieses Werk enthält Material, das durch Ulisses Spiele und/oder andere Autoren urheberrechtlich geschützt ist. Solches Material wird mit
+                Erlaubnis im Rahmen der Vereinbarung über Gemeinschaftsinhalte für SCRIPTORIUM AVENTURIS verwendet.
+                Alle anderen Originalmaterialien in diesem Werk sind Copyright 2018 von Moritz Schmid und werden im Rahmen der Vereinbarung über
+                Gemeinschaftsinhalte für SCRIPTORIUM AVENTURIS veröffentlicht.
+              </DSADescription>
+            </DSAInfoBox>
+          </DSAGridRow>
+        </DSAGrid>
+      </footer>
+    </div>);
   }
 };
 
