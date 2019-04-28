@@ -31,7 +31,7 @@ function staticGetRandomTable(type) {
 const SUCCESSES = staticGetRandomTable("successes");
 const FAILS = staticGetRandomTable("fails");
 
-class DSAMain extends React.Component {
+class SuccessesAndFailuresMain extends React.Component {
 
   state = {
     open: false,
@@ -114,7 +114,6 @@ class DSAMain extends React.Component {
         }
       })} /></DSAInfoBox>
     }
-
   }
 
   render() {
@@ -126,15 +125,14 @@ class DSAMain extends React.Component {
           handleClose={this.handleClose}
           open={this.state.open}
           actions={this.getDialogActions()}
-          title={this.state.current.title}>
-          {this.state.current.description}
-        </DSADialog>
+          title={this.state.current.title}
+          text={this.state.current.description}/>
       </main>;
   }
 };
 
-DSAMain.propTypes = {
+SuccessesAndFailuresMain.propTypes = {
   classes: PropTypes.object.isRequired
 };
 
-export default withWidth()(withStyles(styles)(DSAMain));
+export default withWidth()(withStyles(styles)(SuccessesAndFailuresMain));
