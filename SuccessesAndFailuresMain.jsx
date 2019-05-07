@@ -8,9 +8,12 @@ import DSAButton from '../controls/DSAButton';
 import { DSAGrid, DSAGridItem, DSAGridRow} from '../controls/DSAGrid';
 import DSAMediaCard from '../controls/DSAMediaCard';
 import DSADialog from '../controls/DSADialog';
-import {mapObject} from '../controls/DSAUtils';
-import {DSARandomAttack} from '../data/DSARandomAttackTables';
 import DSAItemList from '../controls/DSAItemList'
+
+import {DSARandomAttack} from '../data/DSARandomAttackTables';
+
+import {mapObject} from '../utils/MapUtils';
+
 
 const styles = {
   root: {
@@ -95,7 +98,7 @@ class SuccessesAndFailuresMain extends React.Component {
 
   getItems(items, title) {
     const { width } = this.props;
-    if(isWidthUp('sm', width)) {
+    if(isWidthUp('md', width)) {
       return <DSAGrid>
         <DSAGridRow>
           <DSAInfoBox title={title} />
