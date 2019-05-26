@@ -100,12 +100,11 @@ class SuccessesAndFailuresMain extends React.Component {
     const { width } = this.props;
     if(isWidthUp('md', width)) {
       return <DSAGrid>
-        <DSAGridRow>
-          <DSAInfoBox title={title} />
-        </DSAGridRow>
-        <DSAGrid>
-        {items.map((item, index) => this.getGridItem(item, index))}
-        </DSAGrid>
+        <DSAInfoBox title={title}>
+          <DSAGrid>
+          {items.map((item, index) => this.getGridItem(item, index))}
+          </DSAGrid>
+        </DSAInfoBox>
       </DSAGrid>
     }
     else {
