@@ -5,7 +5,7 @@ import withWidth, { isWidthUp } from '@material-ui/core/withWidth';
 
 import DSAInfoBox from '../controls/DSAInfoBox';
 import DSAButton from '../controls/DSAButton';
-import { DSAGrid, DSAGridItem, DSAGridRow} from '../controls/DSAGrid';
+import { DSAGrid, DSAGridItem} from '../controls/DSAGrid';
 import DSAMediaCard from '../controls/DSAMediaCard';
 import DSADialog from '../controls/DSADialog';
 import DSAItemList from '../controls/DSAItemList'
