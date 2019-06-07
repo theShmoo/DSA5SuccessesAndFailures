@@ -5,7 +5,7 @@ import withWidth, { isWidthUp } from '@material-ui/core/withWidth';
 
 import DSAInfoBox from '../controls/DSAInfoBox';
 import DSAButton from '../controls/DSAButton';
-import { DSAGrid, DSAGridItem} from '../controls/DSAGrid';
+import { DSAGrid, DSAGridRow, DSAGridItem} from '../controls/DSAGrid';
 import DSAMediaCard from '../controls/DSAMediaCard';
 import DSADialog from '../controls/DSADialog';
 import DSAItemList from '../controls/DSAItemList'
@@ -34,14 +34,27 @@ function staticGetRandomTable(type) {
 const SUCCESSES = staticGetRandomTable("successes");
 const FAILS = staticGetRandomTable("fails");
 
+function History(props) {
+  const {history} = props;
+  const historyItems = history.map(h => {
+    return {
+      name: h.title,
+      value: h.description
+    }});
+  return <DSAGrid>
+    <DSAGridRow>
+      <DSAInfoBox>
+        <DSAItemList items={[{title: "Letzte Ereignisse", items: historyItems}]}/>
+        </DSAInfoBox>
+    </DSAGridRow>
+  </DSAGrid>;
+}
+
 class SuccessesAndFailuresMain extends React.Component {
 
   state = {
     open: false,
-    current : {
-      title: "test",
-      description: "test !"
-    }
+    history: []
   };
 
   getRandomEntry(array)
@@ -63,9 +76,13 @@ class SuccessesAndFailuresMain extends React.Component {
   }
 
   handleClickOpen = (table) => (e) => {
-    this.setState({
-      open: true,
-      current: this.getRandomEntry(table)
+    const newEntry = this.getRandomEntry(table);
+    this.setState((state) => {
+      const history = [newEntry, ...state.history];
+      return {
+        open: true,
+        history: history
+      }
     });
   };
 
@@ -120,15 +137,22 @@ class SuccessesAndFailuresMain extends React.Component {
 
   render() {
     const { classes } = this.props;
+    const { history } = this.state;
+    const current = history.length > 0 ? history[0] : undefined;
+
     return <main className={classes.root}>
             {this.getItems(SUCCESSES, "Kritische Erfolge")}
             {this.getItems(FAILS, "Kritische Fehlschläge")}
+        {current ? <div>
+        <History history={history} />
         <DSADialog
           handleClose={this.handleClose}
           open={this.state.open}
           actions={this.getDialogActions()}
-          title={this.state.current.title}
-          text={this.state.current.description}/>
+          title={current.title}
+          text={current.description} />
+        </div> : ""}
+
       </main>;
   }
 };
